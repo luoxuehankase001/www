@@ -1,5 +1,5 @@
 <template>
-  <div class="footer-guide">
+  <div class="footer-guide"  v-show="$route.meta.isShowFooter">
     <span class="guide-item" :class="{on: $route.path==='/msite'}"  @click="goto('/msite')">
       <span>
         <i class="iconfont icon-fenxiang"></i>
@@ -34,7 +34,12 @@
     name: 'FooterGuide',
     methods: {
       goto(path){
-        this.$router.replace(path)
+        if(path!==this.$route.path){
+          this.$router.replace(path)
+        }else{
+          window.location = path
+        }
+       
       }
     }
   }
@@ -45,6 +50,7 @@
   .footer-guide
     top-border-1px(#cccccc)
     display flex
+    background-color: #FFFFFF
     position fixed
     left 0
     bottom 0

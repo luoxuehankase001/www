@@ -8,6 +8,10 @@
 <script type="text/ecmascript-6">
 import FooterGuide from '@/components/FooterGuide/FooterGuide'
  export default {
+  async mounted(){
+    //通知action异步获取adress并保存到state
+    this.$store.dispatch('getAddress')
+   },
  components:{
    FooterGuide
  }
